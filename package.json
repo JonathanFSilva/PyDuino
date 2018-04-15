@@ -1,0 +1,24 @@
+{
+  "name": "ide",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apisauce": "^0.14.3",
+    "material-ui": "^1.0.0-beta.41",
+    "react": "^16.3.1",
+    "react-ace": "^5.10.0",
+    "react-dom": "^16.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "server": "cd ./compilador/src && FLASK_APP=main.py flask run",
+    "app": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn app\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
