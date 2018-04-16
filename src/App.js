@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 
 import AceEditor from 'react-ace';
 import 'brace/mode/python';
+
 import 'brace/theme/chrome';
 import 'brace/theme/github';
 import 'brace/theme/monokai';

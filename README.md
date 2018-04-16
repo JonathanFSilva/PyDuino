@@ -6,36 +6,11 @@ A linguagem descrita será criada com o intuito de programar um Arduino. Ela ter
 A linguagem permitirá:
 * Comentários, marcados pelo uso de asterisco(\*) no início e no fim;
 * Declaração de variáveis em qualquer lugar do código, dos tipos numérico e booleano;
-* Uso de estrutura condicional (if, else) e de repetição (while);
+* Uso de estrutura condicional (if, else);
+* Uso de estruttura de repetição (while);
 * Uso de operadores matemáticos e comparadores.
 
-#### Exemplo de código:
-```
-* comentario *
 
-$1.entrada() * Define o pino 1 como entrada *
-$2.saida() * Define o pino 2 como saida *
-
-inicio  
-	numero cont = 0
-	loop( cont <= 10 ) [
-		cont = cont + 1
-	]
-
-	* condicional *
-
-	bool estado = $1.valor()
-	? ( estado ) [
-		$2.liga()
-	] : [
-		$2.desliga()
-	]
-
-	aguarde(1) * espera por 1 segundo *
-fim
-```
-
-## Analisador Léxico  
 
 ### Tabela de Tokens  
 
@@ -62,3 +37,61 @@ fim
 | t_COMPARADOR | !=,<,<=,==,>,>=							| `\!\=`\|`\<`\|`\<\=`\|`\=\=`\|`\>`\|`\>\=` |
 | t_NUMERO | 1,10,100	| `[\d]+` |
 | t_PONTO | .	| `\.` |
+
+#### Exemplo de código:
+```
+* comentario *
+
+$1.entrada() * Define o pino 1 como entrada *
+$2.saida() * Define o pino 2 como saida *
+
+inicio  
+	numero _cont = 0
+	loop ( _cont <= 10 ) [
+		_cont = _cont + 1
+	]
+
+	* condicional *
+	
+	booleano _estado = $1.valor()
+	? ( _estado ) [
+		$2.liga()
+	] : [
+		$2.desliga()
+	]
+
+	aguarde(1) * espera por 1 segundo *
+fim
+```
+
+
+
+## Dependencias
+
+#### Compilador
+
+* Python3.6
+
+  <https://www.python.org/downloads/>
+
+* PLY (Python Lex-Yacc)
+
+  `$ pip install ply`
+
+* FLASK
+
+  `$ pip install flask`
+
+### IDE
+
+* Nodejs
+
+  <https://nodejs.org/en/>
+
+* Para instalar as dependencias da  ide basta rodar o comando abaixo dentro da pasta do projeto:
+
+  `npm install`
+
+### Execução
+
+Vá até a pasta do projeto e rode o comando `npm start` . Para acessar basta abrir a url <http://localhost:3000> .
