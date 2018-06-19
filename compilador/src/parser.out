@@ -1,0 +1,1007 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> pre_programa
+Rule 1     pre_programa -> INIPROG programa_lista FIMPROG
+Rule 2     programa -> expressao FIMLINHA
+Rule 3     programa -> atribuicao FIMLINHA
+Rule 4     programa -> declaracao FIMLINHA
+Rule 5     programa -> pino_funcoes FIMLINHA
+Rule 6     programa -> aguarde FIMLINHA
+Rule 7     programa -> condicional
+Rule 8     programa -> repeticao
+Rule 9     programa_lista -> programa programa_lista
+Rule 10    programa_lista -> programa
+Rule 11    expressao -> expressao OPERADOR expressao
+Rule 12    expressao -> expressao COMPARADOR expressao
+Rule 13    expressao -> NEGACAO expressao
+Rule 14    expressao -> INIPAR expressao FIMPAR
+Rule 15    expressao -> NUMERO
+Rule 16    expressao -> VARIAVEL
+Rule 17    expressao -> RESERVADAS
+Rule 18    atribuicao -> VARIAVEL ATRIBUIDOR expressao
+Rule 19    atribuicao -> VARIAVEL ATRIBUIDOR pino_funcoes
+Rule 20    declaracao -> TIPO VARIAVEL
+Rule 21    declaracao -> TIPO atribuicao
+Rule 22    pino_funcoes -> PINO PONTO FUNCOES INIPAR FIMPAR
+Rule 23    condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+Rule 24    condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+Rule 25    repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+Rule 26    aguarde -> DELAY
+
+Terminals, with rules where they appear
+
+ATRIBUIDOR           : 18 19
+COMPARADOR           : 12
+DELAY                : 26
+FIMBLOCO             : 23 24 24 25
+FIMLINHA             : 2 3 4 5 6
+FIMPAR               : 14 22 23 24 25
+FIMPROG              : 1
+FUNCOES              : 22
+INIBLOCO             : 23 24 24 25
+INIPAR               : 14 22 23 24 25
+INIPROG              : 1
+NEGACAO              : 13
+NUMERO               : 15
+OPERADOR             : 11
+PINO                 : 22
+PONTO                : 22
+REPETICAO            : 25
+RESERVADAS           : 17
+SE                   : 23 24
+SENAO                : 24
+TIPO                 : 20 21
+VARIAVEL             : 16 18 19 20
+error                : 
+
+Nonterminals, with rules where they appear
+
+aguarde              : 6
+atribuicao           : 3 21
+condicional          : 7
+declaracao           : 4
+expressao            : 2 11 11 12 12 13 14 18 23 24 25
+pino_funcoes         : 5 19
+pre_programa         : 0
+programa             : 9 10
+programa_lista       : 1 9 23 24 24 25
+repeticao            : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . pre_programa
+    (1) pre_programa -> . INIPROG programa_lista FIMPROG
+
+    INIPROG         shift and go to state 2
+
+    pre_programa                   shift and go to state 1
+
+state 1
+
+    (0) S' -> pre_programa .
+
+
+
+state 2
+
+    (1) pre_programa -> INIPROG . programa_lista FIMPROG
+    (9) programa_lista -> . programa programa_lista
+    (10) programa_lista -> . programa
+    (2) programa -> . expressao FIMLINHA
+    (3) programa -> . atribuicao FIMLINHA
+    (4) programa -> . declaracao FIMLINHA
+    (5) programa -> . pino_funcoes FIMLINHA
+    (6) programa -> . aguarde FIMLINHA
+    (7) programa -> . condicional
+    (8) programa -> . repeticao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+    (18) atribuicao -> . VARIAVEL ATRIBUIDOR expressao
+    (19) atribuicao -> . VARIAVEL ATRIBUIDOR pino_funcoes
+    (20) declaracao -> . TIPO VARIAVEL
+    (21) declaracao -> . TIPO atribuicao
+    (22) pino_funcoes -> . PINO PONTO FUNCOES INIPAR FIMPAR
+    (26) aguarde -> . DELAY
+    (23) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (25) repeticao -> . REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 15
+    RESERVADAS      shift and go to state 16
+    TIPO            shift and go to state 17
+    PINO            shift and go to state 18
+    DELAY           shift and go to state 19
+    SE              shift and go to state 20
+    REPETICAO       shift and go to state 21
+
+    programa_lista                 shift and go to state 3
+    programa                       shift and go to state 4
+    expressao                      shift and go to state 5
+    atribuicao                     shift and go to state 6
+    declaracao                     shift and go to state 7
+    pino_funcoes                   shift and go to state 8
+    aguarde                        shift and go to state 9
+    condicional                    shift and go to state 10
+    repeticao                      shift and go to state 11
+
+state 3
+
+    (1) pre_programa -> INIPROG programa_lista . FIMPROG
+
+    FIMPROG         shift and go to state 22
+
+
+state 4
+
+    (9) programa_lista -> programa . programa_lista
+    (10) programa_lista -> programa .
+    (9) programa_lista -> . programa programa_lista
+    (10) programa_lista -> . programa
+    (2) programa -> . expressao FIMLINHA
+    (3) programa -> . atribuicao FIMLINHA
+    (4) programa -> . declaracao FIMLINHA
+    (5) programa -> . pino_funcoes FIMLINHA
+    (6) programa -> . aguarde FIMLINHA
+    (7) programa -> . condicional
+    (8) programa -> . repeticao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+    (18) atribuicao -> . VARIAVEL ATRIBUIDOR expressao
+    (19) atribuicao -> . VARIAVEL ATRIBUIDOR pino_funcoes
+    (20) declaracao -> . TIPO VARIAVEL
+    (21) declaracao -> . TIPO atribuicao
+    (22) pino_funcoes -> . PINO PONTO FUNCOES INIPAR FIMPAR
+    (26) aguarde -> . DELAY
+    (23) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (25) repeticao -> . REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+
+    FIMPROG         reduce using rule 10 (programa_lista -> programa .)
+    FIMBLOCO        reduce using rule 10 (programa_lista -> programa .)
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 15
+    RESERVADAS      shift and go to state 16
+    TIPO            shift and go to state 17
+    PINO            shift and go to state 18
+    DELAY           shift and go to state 19
+    SE              shift and go to state 20
+    REPETICAO       shift and go to state 21
+
+    programa                       shift and go to state 4
+    programa_lista                 shift and go to state 23
+    expressao                      shift and go to state 5
+    atribuicao                     shift and go to state 6
+    declaracao                     shift and go to state 7
+    pino_funcoes                   shift and go to state 8
+    aguarde                        shift and go to state 9
+    condicional                    shift and go to state 10
+    repeticao                      shift and go to state 11
+
+state 5
+
+    (2) programa -> expressao . FIMLINHA
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMLINHA        shift and go to state 24
+    OPERADOR        shift and go to state 25
+    COMPARADOR      shift and go to state 26
+
+
+state 6
+
+    (3) programa -> atribuicao . FIMLINHA
+
+    FIMLINHA        shift and go to state 27
+
+
+state 7
+
+    (4) programa -> declaracao . FIMLINHA
+
+    FIMLINHA        shift and go to state 28
+
+
+state 8
+
+    (5) programa -> pino_funcoes . FIMLINHA
+
+    FIMLINHA        shift and go to state 29
+
+
+state 9
+
+    (6) programa -> aguarde . FIMLINHA
+
+    FIMLINHA        shift and go to state 30
+
+
+state 10
+
+    (7) programa -> condicional .
+
+    NEGACAO         reduce using rule 7 (programa -> condicional .)
+    INIPAR          reduce using rule 7 (programa -> condicional .)
+    NUMERO          reduce using rule 7 (programa -> condicional .)
+    VARIAVEL        reduce using rule 7 (programa -> condicional .)
+    RESERVADAS      reduce using rule 7 (programa -> condicional .)
+    TIPO            reduce using rule 7 (programa -> condicional .)
+    PINO            reduce using rule 7 (programa -> condicional .)
+    DELAY           reduce using rule 7 (programa -> condicional .)
+    SE              reduce using rule 7 (programa -> condicional .)
+    REPETICAO       reduce using rule 7 (programa -> condicional .)
+    FIMPROG         reduce using rule 7 (programa -> condicional .)
+    FIMBLOCO        reduce using rule 7 (programa -> condicional .)
+
+
+state 11
+
+    (8) programa -> repeticao .
+
+    NEGACAO         reduce using rule 8 (programa -> repeticao .)
+    INIPAR          reduce using rule 8 (programa -> repeticao .)
+    NUMERO          reduce using rule 8 (programa -> repeticao .)
+    VARIAVEL        reduce using rule 8 (programa -> repeticao .)
+    RESERVADAS      reduce using rule 8 (programa -> repeticao .)
+    TIPO            reduce using rule 8 (programa -> repeticao .)
+    PINO            reduce using rule 8 (programa -> repeticao .)
+    DELAY           reduce using rule 8 (programa -> repeticao .)
+    SE              reduce using rule 8 (programa -> repeticao .)
+    REPETICAO       reduce using rule 8 (programa -> repeticao .)
+    FIMPROG         reduce using rule 8 (programa -> repeticao .)
+    FIMBLOCO        reduce using rule 8 (programa -> repeticao .)
+
+
+state 12
+
+    (13) expressao -> NEGACAO . expressao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+
+    expressao                      shift and go to state 31
+
+state 13
+
+    (14) expressao -> INIPAR . expressao FIMPAR
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+
+    expressao                      shift and go to state 33
+
+state 14
+
+    (15) expressao -> NUMERO .
+
+    FIMLINHA        reduce using rule 15 (expressao -> NUMERO .)
+    OPERADOR        reduce using rule 15 (expressao -> NUMERO .)
+    COMPARADOR      reduce using rule 15 (expressao -> NUMERO .)
+    FIMPAR          reduce using rule 15 (expressao -> NUMERO .)
+
+
+state 15
+
+    (16) expressao -> VARIAVEL .
+    (18) atribuicao -> VARIAVEL . ATRIBUIDOR expressao
+    (19) atribuicao -> VARIAVEL . ATRIBUIDOR pino_funcoes
+
+    FIMLINHA        reduce using rule 16 (expressao -> VARIAVEL .)
+    OPERADOR        reduce using rule 16 (expressao -> VARIAVEL .)
+    COMPARADOR      reduce using rule 16 (expressao -> VARIAVEL .)
+    ATRIBUIDOR      shift and go to state 34
+
+
+state 16
+
+    (17) expressao -> RESERVADAS .
+
+    FIMLINHA        reduce using rule 17 (expressao -> RESERVADAS .)
+    OPERADOR        reduce using rule 17 (expressao -> RESERVADAS .)
+    COMPARADOR      reduce using rule 17 (expressao -> RESERVADAS .)
+    FIMPAR          reduce using rule 17 (expressao -> RESERVADAS .)
+
+
+state 17
+
+    (20) declaracao -> TIPO . VARIAVEL
+    (21) declaracao -> TIPO . atribuicao
+    (18) atribuicao -> . VARIAVEL ATRIBUIDOR expressao
+    (19) atribuicao -> . VARIAVEL ATRIBUIDOR pino_funcoes
+
+    VARIAVEL        shift and go to state 35
+
+    atribuicao                     shift and go to state 36
+
+state 18
+
+    (22) pino_funcoes -> PINO . PONTO FUNCOES INIPAR FIMPAR
+
+    PONTO           shift and go to state 37
+
+
+state 19
+
+    (26) aguarde -> DELAY .
+
+    FIMLINHA        reduce using rule 26 (aguarde -> DELAY .)
+
+
+state 20
+
+    (23) condicional -> SE . INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> SE . INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+
+    INIPAR          shift and go to state 38
+
+
+state 21
+
+    (25) repeticao -> REPETICAO . INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+
+    INIPAR          shift and go to state 39
+
+
+state 22
+
+    (1) pre_programa -> INIPROG programa_lista FIMPROG .
+
+    $end            reduce using rule 1 (pre_programa -> INIPROG programa_lista FIMPROG .)
+
+
+state 23
+
+    (9) programa_lista -> programa programa_lista .
+
+    FIMPROG         reduce using rule 9 (programa_lista -> programa programa_lista .)
+    FIMBLOCO        reduce using rule 9 (programa_lista -> programa programa_lista .)
+
+
+state 24
+
+    (2) programa -> expressao FIMLINHA .
+
+    NEGACAO         reduce using rule 2 (programa -> expressao FIMLINHA .)
+    INIPAR          reduce using rule 2 (programa -> expressao FIMLINHA .)
+    NUMERO          reduce using rule 2 (programa -> expressao FIMLINHA .)
+    VARIAVEL        reduce using rule 2 (programa -> expressao FIMLINHA .)
+    RESERVADAS      reduce using rule 2 (programa -> expressao FIMLINHA .)
+    TIPO            reduce using rule 2 (programa -> expressao FIMLINHA .)
+    PINO            reduce using rule 2 (programa -> expressao FIMLINHA .)
+    DELAY           reduce using rule 2 (programa -> expressao FIMLINHA .)
+    SE              reduce using rule 2 (programa -> expressao FIMLINHA .)
+    REPETICAO       reduce using rule 2 (programa -> expressao FIMLINHA .)
+    FIMPROG         reduce using rule 2 (programa -> expressao FIMLINHA .)
+    FIMBLOCO        reduce using rule 2 (programa -> expressao FIMLINHA .)
+
+
+state 25
+
+    (11) expressao -> expressao OPERADOR . expressao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+
+    expressao                      shift and go to state 40
+
+state 26
+
+    (12) expressao -> expressao COMPARADOR . expressao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+
+    expressao                      shift and go to state 41
+
+state 27
+
+    (3) programa -> atribuicao FIMLINHA .
+
+    NEGACAO         reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    INIPAR          reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    NUMERO          reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    VARIAVEL        reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    RESERVADAS      reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    TIPO            reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    PINO            reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    DELAY           reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    SE              reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    REPETICAO       reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    FIMPROG         reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+    FIMBLOCO        reduce using rule 3 (programa -> atribuicao FIMLINHA .)
+
+
+state 28
+
+    (4) programa -> declaracao FIMLINHA .
+
+    NEGACAO         reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    INIPAR          reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    NUMERO          reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    VARIAVEL        reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    RESERVADAS      reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    TIPO            reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    PINO            reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    DELAY           reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    SE              reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    REPETICAO       reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    FIMPROG         reduce using rule 4 (programa -> declaracao FIMLINHA .)
+    FIMBLOCO        reduce using rule 4 (programa -> declaracao FIMLINHA .)
+
+
+state 29
+
+    (5) programa -> pino_funcoes FIMLINHA .
+
+    NEGACAO         reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    INIPAR          reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    NUMERO          reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    VARIAVEL        reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    RESERVADAS      reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    TIPO            reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    PINO            reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    DELAY           reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    SE              reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    REPETICAO       reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    FIMPROG         reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+    FIMBLOCO        reduce using rule 5 (programa -> pino_funcoes FIMLINHA .)
+
+
+state 30
+
+    (6) programa -> aguarde FIMLINHA .
+
+    NEGACAO         reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    INIPAR          reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    NUMERO          reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    VARIAVEL        reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    RESERVADAS      reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    TIPO            reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    PINO            reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    DELAY           reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    SE              reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    REPETICAO       reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    FIMPROG         reduce using rule 6 (programa -> aguarde FIMLINHA .)
+    FIMBLOCO        reduce using rule 6 (programa -> aguarde FIMLINHA .)
+
+
+state 31
+
+    (13) expressao -> NEGACAO expressao .
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMLINHA        reduce using rule 13 (expressao -> NEGACAO expressao .)
+    OPERADOR        reduce using rule 13 (expressao -> NEGACAO expressao .)
+    COMPARADOR      reduce using rule 13 (expressao -> NEGACAO expressao .)
+    FIMPAR          reduce using rule 13 (expressao -> NEGACAO expressao .)
+
+  ! OPERADOR        [ shift and go to state 25 ]
+  ! COMPARADOR      [ shift and go to state 26 ]
+
+
+state 32
+
+    (16) expressao -> VARIAVEL .
+
+    OPERADOR        reduce using rule 16 (expressao -> VARIAVEL .)
+    COMPARADOR      reduce using rule 16 (expressao -> VARIAVEL .)
+    FIMLINHA        reduce using rule 16 (expressao -> VARIAVEL .)
+    FIMPAR          reduce using rule 16 (expressao -> VARIAVEL .)
+
+
+state 33
+
+    (14) expressao -> INIPAR expressao . FIMPAR
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMPAR          shift and go to state 42
+    OPERADOR        shift and go to state 25
+    COMPARADOR      shift and go to state 26
+
+
+state 34
+
+    (18) atribuicao -> VARIAVEL ATRIBUIDOR . expressao
+    (19) atribuicao -> VARIAVEL ATRIBUIDOR . pino_funcoes
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+    (22) pino_funcoes -> . PINO PONTO FUNCOES INIPAR FIMPAR
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+    PINO            shift and go to state 18
+
+    expressao                      shift and go to state 43
+    pino_funcoes                   shift and go to state 44
+
+state 35
+
+    (20) declaracao -> TIPO VARIAVEL .
+    (18) atribuicao -> VARIAVEL . ATRIBUIDOR expressao
+    (19) atribuicao -> VARIAVEL . ATRIBUIDOR pino_funcoes
+
+    FIMLINHA        reduce using rule 20 (declaracao -> TIPO VARIAVEL .)
+    ATRIBUIDOR      shift and go to state 34
+
+
+state 36
+
+    (21) declaracao -> TIPO atribuicao .
+
+    FIMLINHA        reduce using rule 21 (declaracao -> TIPO atribuicao .)
+
+
+state 37
+
+    (22) pino_funcoes -> PINO PONTO . FUNCOES INIPAR FIMPAR
+
+    FUNCOES         shift and go to state 45
+
+
+state 38
+
+    (23) condicional -> SE INIPAR . expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> SE INIPAR . expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+
+    expressao                      shift and go to state 46
+
+state 39
+
+    (25) repeticao -> REPETICAO INIPAR . expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 32
+    RESERVADAS      shift and go to state 16
+
+    expressao                      shift and go to state 47
+
+state 40
+
+    (11) expressao -> expressao OPERADOR expressao .
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMLINHA        reduce using rule 11 (expressao -> expressao OPERADOR expressao .)
+    OPERADOR        reduce using rule 11 (expressao -> expressao OPERADOR expressao .)
+    COMPARADOR      reduce using rule 11 (expressao -> expressao OPERADOR expressao .)
+    FIMPAR          reduce using rule 11 (expressao -> expressao OPERADOR expressao .)
+
+  ! OPERADOR        [ shift and go to state 25 ]
+  ! COMPARADOR      [ shift and go to state 26 ]
+
+
+state 41
+
+    (12) expressao -> expressao COMPARADOR expressao .
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+  ! shift/reduce conflict for OPERADOR resolved as shift
+  ! shift/reduce conflict for COMPARADOR resolved as shift
+    FIMLINHA        reduce using rule 12 (expressao -> expressao COMPARADOR expressao .)
+    FIMPAR          reduce using rule 12 (expressao -> expressao COMPARADOR expressao .)
+    OPERADOR        shift and go to state 25
+    COMPARADOR      shift and go to state 26
+
+  ! OPERADOR        [ reduce using rule 12 (expressao -> expressao COMPARADOR expressao .) ]
+  ! COMPARADOR      [ reduce using rule 12 (expressao -> expressao COMPARADOR expressao .) ]
+
+
+state 42
+
+    (14) expressao -> INIPAR expressao FIMPAR .
+
+    FIMLINHA        reduce using rule 14 (expressao -> INIPAR expressao FIMPAR .)
+    OPERADOR        reduce using rule 14 (expressao -> INIPAR expressao FIMPAR .)
+    COMPARADOR      reduce using rule 14 (expressao -> INIPAR expressao FIMPAR .)
+    FIMPAR          reduce using rule 14 (expressao -> INIPAR expressao FIMPAR .)
+
+
+state 43
+
+    (18) atribuicao -> VARIAVEL ATRIBUIDOR expressao .
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMLINHA        reduce using rule 18 (atribuicao -> VARIAVEL ATRIBUIDOR expressao .)
+    OPERADOR        shift and go to state 25
+    COMPARADOR      shift and go to state 26
+
+
+state 44
+
+    (19) atribuicao -> VARIAVEL ATRIBUIDOR pino_funcoes .
+
+    FIMLINHA        reduce using rule 19 (atribuicao -> VARIAVEL ATRIBUIDOR pino_funcoes .)
+
+
+state 45
+
+    (22) pino_funcoes -> PINO PONTO FUNCOES . INIPAR FIMPAR
+
+    INIPAR          shift and go to state 48
+
+
+state 46
+
+    (23) condicional -> SE INIPAR expressao . FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> SE INIPAR expressao . FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMPAR          shift and go to state 49
+    OPERADOR        shift and go to state 25
+    COMPARADOR      shift and go to state 26
+
+
+state 47
+
+    (25) repeticao -> REPETICAO INIPAR expressao . FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (11) expressao -> expressao . OPERADOR expressao
+    (12) expressao -> expressao . COMPARADOR expressao
+
+    FIMPAR          shift and go to state 50
+    OPERADOR        shift and go to state 25
+    COMPARADOR      shift and go to state 26
+
+
+state 48
+
+    (22) pino_funcoes -> PINO PONTO FUNCOES INIPAR . FIMPAR
+
+    FIMPAR          shift and go to state 51
+
+
+state 49
+
+    (23) condicional -> SE INIPAR expressao FIMPAR . INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> SE INIPAR expressao FIMPAR . INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+
+    INIBLOCO        shift and go to state 52
+
+
+state 50
+
+    (25) repeticao -> REPETICAO INIPAR expressao FIMPAR . INIBLOCO programa_lista FIMBLOCO
+
+    INIBLOCO        shift and go to state 53
+
+
+state 51
+
+    (22) pino_funcoes -> PINO PONTO FUNCOES INIPAR FIMPAR .
+
+    FIMLINHA        reduce using rule 22 (pino_funcoes -> PINO PONTO FUNCOES INIPAR FIMPAR .)
+
+
+state 52
+
+    (23) condicional -> SE INIPAR expressao FIMPAR INIBLOCO . programa_lista FIMBLOCO
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO . programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (9) programa_lista -> . programa programa_lista
+    (10) programa_lista -> . programa
+    (2) programa -> . expressao FIMLINHA
+    (3) programa -> . atribuicao FIMLINHA
+    (4) programa -> . declaracao FIMLINHA
+    (5) programa -> . pino_funcoes FIMLINHA
+    (6) programa -> . aguarde FIMLINHA
+    (7) programa -> . condicional
+    (8) programa -> . repeticao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+    (18) atribuicao -> . VARIAVEL ATRIBUIDOR expressao
+    (19) atribuicao -> . VARIAVEL ATRIBUIDOR pino_funcoes
+    (20) declaracao -> . TIPO VARIAVEL
+    (21) declaracao -> . TIPO atribuicao
+    (22) pino_funcoes -> . PINO PONTO FUNCOES INIPAR FIMPAR
+    (26) aguarde -> . DELAY
+    (23) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (25) repeticao -> . REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 15
+    RESERVADAS      shift and go to state 16
+    TIPO            shift and go to state 17
+    PINO            shift and go to state 18
+    DELAY           shift and go to state 19
+    SE              shift and go to state 20
+    REPETICAO       shift and go to state 21
+
+    expressao                      shift and go to state 5
+    programa_lista                 shift and go to state 54
+    programa                       shift and go to state 4
+    atribuicao                     shift and go to state 6
+    declaracao                     shift and go to state 7
+    pino_funcoes                   shift and go to state 8
+    aguarde                        shift and go to state 9
+    condicional                    shift and go to state 10
+    repeticao                      shift and go to state 11
+
+state 53
+
+    (25) repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO . programa_lista FIMBLOCO
+    (9) programa_lista -> . programa programa_lista
+    (10) programa_lista -> . programa
+    (2) programa -> . expressao FIMLINHA
+    (3) programa -> . atribuicao FIMLINHA
+    (4) programa -> . declaracao FIMLINHA
+    (5) programa -> . pino_funcoes FIMLINHA
+    (6) programa -> . aguarde FIMLINHA
+    (7) programa -> . condicional
+    (8) programa -> . repeticao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+    (18) atribuicao -> . VARIAVEL ATRIBUIDOR expressao
+    (19) atribuicao -> . VARIAVEL ATRIBUIDOR pino_funcoes
+    (20) declaracao -> . TIPO VARIAVEL
+    (21) declaracao -> . TIPO atribuicao
+    (22) pino_funcoes -> . PINO PONTO FUNCOES INIPAR FIMPAR
+    (26) aguarde -> . DELAY
+    (23) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (25) repeticao -> . REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 15
+    RESERVADAS      shift and go to state 16
+    TIPO            shift and go to state 17
+    PINO            shift and go to state 18
+    DELAY           shift and go to state 19
+    SE              shift and go to state 20
+    REPETICAO       shift and go to state 21
+
+    expressao                      shift and go to state 5
+    programa_lista                 shift and go to state 55
+    programa                       shift and go to state 4
+    atribuicao                     shift and go to state 6
+    declaracao                     shift and go to state 7
+    pino_funcoes                   shift and go to state 8
+    aguarde                        shift and go to state 9
+    condicional                    shift and go to state 10
+    repeticao                      shift and go to state 11
+
+state 54
+
+    (23) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista . FIMBLOCO
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista . FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+
+    FIMBLOCO        shift and go to state 56
+
+
+state 55
+
+    (25) repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista . FIMBLOCO
+
+    FIMBLOCO        shift and go to state 57
+
+
+state 56
+
+    (23) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO . SENAO INIBLOCO programa_lista FIMBLOCO
+
+    NEGACAO         reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    INIPAR          reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    NUMERO          reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    VARIAVEL        reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    RESERVADAS      reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    TIPO            reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    PINO            reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    DELAY           reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    SE              reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    REPETICAO       reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    FIMPROG         reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    FIMBLOCO        reduce using rule 23 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    SENAO           shift and go to state 58
+
+
+state 57
+
+    (25) repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .
+
+    NEGACAO         reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    INIPAR          reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    NUMERO          reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    VARIAVEL        reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    RESERVADAS      reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    TIPO            reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    PINO            reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    DELAY           reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    SE              reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    REPETICAO       reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    FIMPROG         reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+    FIMBLOCO        reduce using rule 25 (repeticao -> REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO .)
+
+
+state 58
+
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO . INIBLOCO programa_lista FIMBLOCO
+
+    INIBLOCO        shift and go to state 59
+
+
+state 59
+
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO . programa_lista FIMBLOCO
+    (9) programa_lista -> . programa programa_lista
+    (10) programa_lista -> . programa
+    (2) programa -> . expressao FIMLINHA
+    (3) programa -> . atribuicao FIMLINHA
+    (4) programa -> . declaracao FIMLINHA
+    (5) programa -> . pino_funcoes FIMLINHA
+    (6) programa -> . aguarde FIMLINHA
+    (7) programa -> . condicional
+    (8) programa -> . repeticao
+    (11) expressao -> . expressao OPERADOR expressao
+    (12) expressao -> . expressao COMPARADOR expressao
+    (13) expressao -> . NEGACAO expressao
+    (14) expressao -> . INIPAR expressao FIMPAR
+    (15) expressao -> . NUMERO
+    (16) expressao -> . VARIAVEL
+    (17) expressao -> . RESERVADAS
+    (18) atribuicao -> . VARIAVEL ATRIBUIDOR expressao
+    (19) atribuicao -> . VARIAVEL ATRIBUIDOR pino_funcoes
+    (20) declaracao -> . TIPO VARIAVEL
+    (21) declaracao -> . TIPO atribuicao
+    (22) pino_funcoes -> . PINO PONTO FUNCOES INIPAR FIMPAR
+    (26) aguarde -> . DELAY
+    (23) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+    (24) condicional -> . SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO
+    (25) repeticao -> . REPETICAO INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO
+
+    NEGACAO         shift and go to state 12
+    INIPAR          shift and go to state 13
+    NUMERO          shift and go to state 14
+    VARIAVEL        shift and go to state 15
+    RESERVADAS      shift and go to state 16
+    TIPO            shift and go to state 17
+    PINO            shift and go to state 18
+    DELAY           shift and go to state 19
+    SE              shift and go to state 20
+    REPETICAO       shift and go to state 21
+
+    expressao                      shift and go to state 5
+    programa_lista                 shift and go to state 60
+    programa                       shift and go to state 4
+    atribuicao                     shift and go to state 6
+    declaracao                     shift and go to state 7
+    pino_funcoes                   shift and go to state 8
+    aguarde                        shift and go to state 9
+    condicional                    shift and go to state 10
+    repeticao                      shift and go to state 11
+
+state 60
+
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista . FIMBLOCO
+
+    FIMBLOCO        shift and go to state 61
+
+
+state 61
+
+    (24) condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .
+
+    NEGACAO         reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    INIPAR          reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    NUMERO          reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    VARIAVEL        reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    RESERVADAS      reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    TIPO            reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    PINO            reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    DELAY           reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    SE              reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    REPETICAO       reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    FIMPROG         reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+    FIMBLOCO        reduce using rule 24 (condicional -> SE INIPAR expressao FIMPAR INIBLOCO programa_lista FIMBLOCO SENAO INIBLOCO programa_lista FIMBLOCO .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for OPERADOR in state 41 resolved as shift
+WARNING: shift/reduce conflict for COMPARADOR in state 41 resolved as shift

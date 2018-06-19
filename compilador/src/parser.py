@@ -109,5 +109,5 @@ class PyduinoParser(object):
         self.count = qtd_lines
 
         out = self.parser.parse(data)
-        pprint(out)
+        # pprint(out)
         return out
