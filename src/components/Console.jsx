@@ -1,6 +1,5 @@
 import React from 'react';
 
-import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
@@ -12,6 +11,7 @@ function TabContainer(props) {
         value={props.children}
         style={
           {
+            fontSize: 16,
             resize: 'none',
             backgroundColor: '#e8e8e8',
             width: '100%',
@@ -36,7 +36,7 @@ class Console extends React.PureComponent {
 
   render() {
     const { value } = this.state;
-    const { tokens, errors, color } = this.props;
+    const { tokens, errors } = this.props;
 
     return (
       <div>
@@ -44,11 +44,11 @@ class Console extends React.PureComponent {
           <Tabs
             value={value}
             onChange={this.handleChange}
-            indicatorColor={!!color ? color : 'primary'}
-            textColor={!!color ? color : 'primary'}
+            indicatorColor={'primary'}
+            textColor={'primary'}
           >
             <Tab label="Tokens" />
-            <Tab label="Erros" />
+            <Tab label="Saída" />
           </Tabs>
         </Paper>
         {

@@ -2,11 +2,12 @@ import React from 'react';
 
 import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
-import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
-import Input, { InputLabel } from 'material-ui/Input';
+import { InputLabel } from 'material-ui/Input';
 import Dialog, { DialogActions, DialogContent, DialogTitle } from 'material-ui/Dialog';
 
+import Tooltip from 'material-ui/Tooltip';
+import Widgets from 'material-ui-icons/Widgets';
 
 class SelectTheme extends React.Component {
   state = {
@@ -24,7 +25,9 @@ class SelectTheme extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Temas</Button>
+        <Tooltip id="tooltip-bottom" title="Temas" placement="bottom">
+          <Button onClick={this.handleClickOpen}><Widgets style={{ 'color': '#ffffff' }} /></Button>
+        </Tooltip>
         <Dialog
           disableBackdropClick
           disableEscapeKeyDown
